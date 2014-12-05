@@ -17,3 +17,6 @@ Route::get('perfiles/{id}', array('uses'=>'PerfilesController@verPerfil'));
 // este parámetro es pasado al controlador, podemos colocar todos los parámetros que necesitemos 
 // solo hay que tomar en cuenta que los parámetros van entre llaves {}
 // si el parámetro es opcional se colocar un signo de interrogación {parámetro?}
+
+Route::get('perfiles/borrar/{id}', array('uses'=>'PerfilesController@borrarPerfil'));
+//esta ruta borra el perfil 

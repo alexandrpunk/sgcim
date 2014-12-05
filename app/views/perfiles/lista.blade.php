@@ -16,9 +16,8 @@
  
 <ul>
   @foreach($perfiles as $perfil)
-           <li>
-    {{ HTML::link( 'perfiles/'.$perfil->id , $perfil->nom_perfil.' - '.$perfil->desc_perfil ) }}
-      
+    <li>
+    {{ HTML::link( 'perfiles/'.$perfil->id , $perfil->nom_perfil.' - '.$perfil->desc_perfil ) }} ~ {{ HTML::link( 'perfiles/borrar/'.$perfil->id ,'Borrar') }}
   </li>
           @endforeach
   </ul>

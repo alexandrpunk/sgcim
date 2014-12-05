@@ -53,8 +53,20 @@ class PerfilesController extends BaseController {
         $perfil = Perfil::find($id);
         // para buscar al usuario utilizamos el metido find que nos proporciona Laravel 
         // este método devuelve un objete con toda la información que contiene un usuario
+        return View::make('perfiles.ver', array('perfil' => $perfil));
+    }
     
-    return View::make('perfiles.ver', array('perfil' => $perfil));
+    public function borrarPerfil($id)
+    {
+    // en este método podemos observar como se recibe un parámetro llamado id
+    // este es el id del usuario que se desea buscar y se debe declarar en la ruta como un parámetro 
+    
+        $perfil = Perfil::find($id);
+        $perfil->delete();
+        // para buscar al usuario utilizamos el metido find que nos proporciona Laravel 
+        // este método devuelve un objete con toda la información que contiene un usuario
+    
+    return Redirect::to('perfiles');
     }
  
 }
