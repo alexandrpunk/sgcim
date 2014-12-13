@@ -1,22 +1,42 @@
 <?php 
-Route::get('/', function()
-{
-    return Redirect::to('perfiles');
-});
- 
+
+Route::get('/',array('uses' => 'AuthController@showLogin'));
+
+// Authentication
+Route::get('login', array('as' => 'login', 'uses' => 'AuthController@showLogin'));
+Route::post('login', 'AuthController@postLogin');
+Route::get('logout', 'AuthController@getLogout');
+
+//
+//PERFILES
+//
+//lista todos los perfiles
 Route::get('perfiles', array('uses' => 'PerfilesController@mostrarPerfiles'));
  
+//muestra el formulario de creacion de perfiles
 Route::get('perfiles/nuevo', array('uses' => 'PerfilesController@nuevoPerfil'));
- 
+ //envia los datos del formulario de creacion de perfil
 Route::post('perfiles/crear', array('uses' => 'PerfilesController@crearPerfil'));
-// esta ruta es a la cual apunta el formulario donde se introduce la información del usuario 
-// como podemos observar es para recibir peticiones POST 
- 
-Route::get('perfiles/{id}', array('uses'=>'PerfilesController@verPerfil'));
-// esta ruta contiene un parámetro llamado {id}, que sirve para indicar el id del usuario que deseamos buscar 
-// este parámetro es pasado al controlador, podemos colocar todos los parámetros que necesitemos 
-// solo hay que tomar en cuenta que los parámetros van entre llaves {}
-// si el parámetro es opcional se colocar un signo de interrogación {parámetro?}
 
+//muestra el perfil especificado por el id
+Route::get('perfiles/{id}', array('uses'=>'PerfilesController@verPerfil'));
+
+//borra el perfil especificado en el id
 Route::get('perfiles/borrar/{id}', array('uses'=>'PerfilesController@borrarPerfil'));
-//esta ruta borra el perfil 
+
+//
+//Usuarios
+//
+//se muestran los usuarios existentes
+Route::get('usuarios', array('uses' => 'UsuariosController@mostrarUsuarios'));
+
+//muestra el formulario para crear un usuario
+Route::get('usuarios/nuevo', array('uses' => 'UsuariosController@nuevoUsuario'));
+//envia los datos del formulario para crear un usario nuevo
+Route::post('usuarios/crear', array('uses' => 'UsuariosController@crearUsuario'));
+
+//muestra un usuario especificado por su id
+Route::get('usuarios/{id}', array('uses'=>'UsuariosController@verUsuario'));
+
+//borra al usuario especificado por el id
+Route::get('usuarios/borrar/{id}', array('uses'=>'UsuariosController@borrarUsuario'));
