@@ -42,7 +42,7 @@
                         @else
                          <li>{{ HTML::link('usuarios', 'Usuarios') }}</li>
                          <li>{{ HTML::link('perfiles', 'Perfiles') }}</li>
-                            <li>{{ HTML::link('logout', 'Cerrar Sesion') }}</li>
+                         <li>{{ HTML::link('logout', 'Cerrar Sesion') }}</li>
                         @endif
                     </ul> 
                 </div>
