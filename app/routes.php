@@ -40,3 +40,9 @@ Route::get('usuarios/{id}', array('uses'=>'UsuariosController@verUsuario'));
 
 //borra al usuario especificado por el id
 Route::get('usuarios/borrar/{id}', array('uses'=>'UsuariosController@borrarUsuario'));
+
+Route::get('principal',function(){
+
+        return View::make('layouts.principal');}
+
+           );

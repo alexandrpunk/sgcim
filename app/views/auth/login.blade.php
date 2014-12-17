@@ -8,9 +8,11 @@
 {{-- Content --}}
 @section('content')
 
+
 <div class="container">
-    <div class="col-md-6">
-        <div class="panel panel-success bg-success">
+    <div class="row">
+    <div class="col-md-5">
+        <div class="panel panel-success">
             <div class="panel-heading">
                 <div class="panel-title">Iniciar Sesion</div>
                  <div style="float:right; font-size: 90%; position: relative; top:-20px"><a class="text-success"  href="#">¿Olvide mi contraseña?</a></div>
@@ -39,7 +41,9 @@
         </div>
     </div>
     </div>
-    <div class="col-md-6">Mundo</div>
+    <div class="col-md-7">Mundo</div>
+    </div>
 </div>
+ 
 
 @stop

@@ -22,6 +22,7 @@ class AuthController extends BaseController {
             'email' => Input::get('email'),
             'password' => Input::get('password')
         );
+         $remember = (Input::has('recordar')) ? true : false;
 
         // Declare the rules for the form validation.
         $rules = array(
@@ -36,7 +37,7 @@ class AuthController extends BaseController {
         if ($validator->passes())
         {
             // Try to log the user in.
-            if (Auth::attempt($userdata))
+            if (Auth::attempt($userdata, $remember))
             {
                 // Redirect to homepage
                 return Redirect::to('usuarios')->with('success', 'You have logged in successfully');
@@ -58,6 +59,6 @@ class AuthController extends BaseController {
         Auth::logout();
 
         // Redirect to homepage
-        return Redirect::to('')->with('success', 'You are logged out');
+        return Redirect::to('login')->with('success', 'You are logged out');
     }
 }
