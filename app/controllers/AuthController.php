@@ -8,7 +8,7 @@ class AuthController extends BaseController {
         if (Auth::check())
         {
             // Redirect to homepage
-            return Redirect::to('usuarios')->with('success', 'You are already logged in');
+            return Redirect::to('principal')->with('success', 'You are already logged in');
         }
 
         // Show the login page
@@ -40,7 +40,7 @@ class AuthController extends BaseController {
             if (Auth::attempt($userdata, $remember))
             {
                 // Redirect to homepage
-                return Redirect::to('usuarios')->with('success', 'You have logged in successfully');
+                return Redirect::to('principal')->with('success', 'You have logged in successfully');
             }
             else
             {

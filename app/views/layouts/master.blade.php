@@ -29,9 +29,21 @@
             </div>
             @endif
     </div>
-        
-        @show
+    <div class="container">
+<div class="row">
+    <div class="col-md-3">
+        @include('includes.lateral')   
+    </div>
+    <div class="col-md-9">
+        <div class="well">
+            @show
             @yield('content')
+        </div>
+    </div>
+</div>
+</div>
+        
+        
     
     @endif
 

@@ -19,3 +19,24 @@ hr {
     border-width: 1px 0 1px 0;
     margin: 10px 0;
 }
+
+.lateral-well{
+   padding: 8px;
+}
+
+.nav-header{
+    padding: 3px 15px;
+    font-size: 1.08em;
+    font-weight: 900;
+    color:#999;
+}
+.nav-list li a{
+    padding: 3px 15px;
+    font-size: .9em;
+    font-weight: 600;
+}
+.nav-list li a:link, a:hover, a:visited, a:active {
+background-color:transparent;
+    color: #279155;
+    
+}
