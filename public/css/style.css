@@ -57,12 +57,12 @@ background-color:transparent;
 .option-block p{
 margin: 0;
 }
-.option-block .glyphicon{
-font-size: 5em;
-color: #a8a8a8;
-margin: 10px;
+
+.option-block img{
+    width: 80px;
+    height: 80px;
+    opacity:0.2;
 }
-.option-block .icon-large{
-font-size: 5em;
-color: #a8a8a8;
+.option-block img:hover{
+    opacity:0.35;
 }
