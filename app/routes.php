@@ -43,6 +43,6 @@ Route::get('usuarios/borrar/{id}', array('uses'=>'UsuariosController@borrarUsuar
 
 Route::get('principal',function(){
 
-        return View::make('layouts.master');}
+        return View::make('cvu.editar');}
 
 );

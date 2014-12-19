@@ -40,3 +40,29 @@ background-color:transparent;
     color: #279155;
     
 }
+
+/*opciones del cvu*/
+.option-block{
+    border: #e0e0e0 1px solid;
+    text-align: center;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin: 10px;
+    padding: 5px;
+    font-weight: bolder;
+    font-size: 0.9em;
+    background-color: #eaeaea;
+}
+.option-block p{
+margin: 0;
+}
+.option-block .glyphicon{
+font-size: 5em;
+color: #a8a8a8;
+margin: 10px;
+}
+.option-block .icon-large{
+font-size: 5em;
+color: #a8a8a8;
+}

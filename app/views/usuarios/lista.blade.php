@@ -1,17 +1,7 @@
 @extends('layouts.master')
  
-@section('sidebar')
-     @parent
-     Lista de Usarios
-@stop
- 
 @section('content')
-        <h1>
-  Usuarios
-      
-    
-  
-</h1>
+<h2>Usuarios</h2>
         {{ HTML::link('usuarios/nuevo', 'Crear Usuario'); }}
  
 <ul>
