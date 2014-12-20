@@ -1,7 +1,5 @@
-$(document).ready(function(){
-
-$("#toggler").click(function(){
-  $(this).toggleClass('active, inactive');
-})
-
-})
+$(document).ready(function() {
+    $('#calendar').datepicker({
+        format: "yyyy-mm-dd"
+    });
+} );

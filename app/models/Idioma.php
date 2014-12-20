@@ -5,6 +5,6 @@ class Idioma extends Eloquent { //Todos los modelos deben extender la clase Eloq
         return $this->belongsTo('CVU', 'id_cvu');
     }
     
-    protected $table = 'Domidioma';
+    protected $table = 'Domidiomas';
     protected $fillable = array('id_cvu', 'idioma', 'certificion', 'nivel');
 }

@@ -1,5 +1,5 @@
 <?php 
-class Hproyecto extends Eloquent { //Todos los modelos deben extender la clase Eloquent
+class Proyecto extends Eloquent { //Todos los modelos deben extender la clase Eloquent
         
     public function cvu(){
         return $this->belongsTo('CVU', 'id_cvu');

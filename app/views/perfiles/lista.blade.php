@@ -1,17 +1,9 @@
 @extends('layouts.master')
  
-@section('sidebar')
-     @parent
-     Lista de Perfiles
-@stop
- 
 @section('content')
-        <h1>
-  Perfiles
-      
-    
-  
-</h1>
+<h3>Crear perfil</h3>
+<hr>
+
         {{ HTML::link('perfiles/nuevo', 'Crear Perfil'); }}
  
 <ul>

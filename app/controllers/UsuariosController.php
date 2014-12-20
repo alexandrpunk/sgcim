@@ -42,7 +42,6 @@ class UsuariosController extends BaseController {
             'id_perfil' =>    Input::get('perfil'),
         );
             
-        Usuario::create($registro);
     // el método create nos permite crear un nuevo usuario en la base de datos, este método es proporcionado por Laravel
     // create recibe como parámetro un arreglo con datos de un modelo y los inserta automáticamente en la base de datos 
     // en este caso el arreglo es la información que viene desde un formulario y la obtenemos con el metido Input::all()

@@ -7,9 +7,8 @@
 
 {{-- Content --}}
 @section('content')
-
-
 <div class="container">
+    <center><img class="logo" src="/img/logo.svg"></center>
     <div class="row">
     <div class="col-md-5">
         <div class="panel panel-success">
@@ -41,7 +40,11 @@
         </div>
     </div>
     </div>
-    <div class="col-md-7">Mundo</div>
+    <div class="col-md-7">
+        <div class="well">
+            {{ HTML::link('usuarios/nuevo', 'Crear un nuevo usuario (integrate)', array('class'=>'btn btn-primary btn-block')); }}
+        </div>
+    </div>
     </div>
 </div>
  

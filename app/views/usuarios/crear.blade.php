@@ -7,12 +7,7 @@
  
 @section('content')
         {{ HTML::link('usuarios', 'volver'); }}
-        <h1>
-  Crear perfil
-      
-    
-  
-</h1>
+
         {{ Form::open(array('url' => 'usuarios/crear', 'autocomplete'=>'off')) }}
 
 <div class="form-group">
@@ -42,7 +37,7 @@
 </div>
 <div class="form-group">
             {{Form::label('password', 'Contraseña')}}
-            {{ Form::password('password', array('placeholder' => 'Contraseña', 'class' => 'form-control', 'required' => 'required')) }}
+            {{ Form::password('password', array('placeholder' => 'Contraseña', 'class' => 'form-control', 'required' => 'required', 'autocomplete'=>'off')) }}
 </div>
 <div class="form-group">
 			{{Form::label('perfil', 'Perfil')}}

@@ -7,12 +7,8 @@
  
 @section('content')
         {{ HTML::link('perfiles', 'volver'); }}
-        <h1>
-  Crear perfil
-      
-    
-  
-</h1>
+<h3>Crear perfil</h3>
+<hr>
 
         {{ Form::open(array('url' => 'perfiles/crear')) }}
 
@@ -22,7 +18,7 @@
 </div>
 <div class="form-group">
             {{Form::label('descripcion', 'Descripcion del Perfil')}}
-            {{Form::text('desc_perfil', Input::old('descripcion'), array('class'=>'form-control', 'placeholder'=>'descripcion del perfil', 'autocomplete'=>'off'))}}
+            {{Form::textarea('desc_perfil', Input::old('descripcion'), array('class'=>'form-control', 'placeholder'=>'descripcion del perfil', 'autocomplete'=>'off'))}}
 </div>
 
 		{{Form::submit('Guardar', array('class'=>'btn btn-success'))}}

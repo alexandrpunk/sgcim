@@ -10,7 +10,7 @@
     </a>
  </div>
 <div class="col-md-3">
-    <a href="#">
+    <a href="cvu/domicilios">
       <div class="option-block">
           <img src="/img/icons/address.png">
           <p>Direcciones</p>
@@ -18,7 +18,7 @@
     </a>
  </div>
 <div class="col-md-3">
-    <a>
+    <a href="cvu/escuelas">
       <div class="option-block">
           <img src="/img/icons/school.png">
           <p>Escuelas</p>
@@ -26,7 +26,7 @@
     </a>
  </div>
 <div class="col-md-3">
-    <a>
+    <a href="cvu/titulos">
       <div class="option-block">
           <img src="/img/icons/title.png">
           <p>Titulos</p>
@@ -34,7 +34,7 @@
     </a>
  </div>
 <div class="col-md-3">
-    <a>
+    <a href="cvu/especialidades">
       <div class="option-block">
           <img src="/img/icons/especial.png">
           <p>Especialidades</p>
@@ -42,7 +42,7 @@
     </a>
  </div>
 <div class="col-md-3">
-    <a>
+    <a href="cvu/cursos">
       <div class="option-block">
           <img src="/img/icons/curso.png">
           <p>Cursos</p>
@@ -50,7 +50,7 @@
     </a>
  </div>
 <div class="col-md-3">
-    <a>
+    <a href="cvu/publicaciones">
       <div class="option-block">
           <img src="/img/icons/publish.png">
           <p>Publicaciones</p>
@@ -58,7 +58,7 @@
     </a>
  </div>
 <div class="col-md-3">
-    <a>
+    <a href="cvu/tecnologias">
       <div class="option-block">
           <img src="/img/icons/tech.png">
           <p>Tecnologias</p>
@@ -66,7 +66,7 @@
     </a>
  </div>
 <div class="col-md-3">
-    <a>
+    <a href="cvu/idiomas">
       <div class="option-block">
           <img src="/img/icons/idiom.png">
           <p>Idiomas</p>
@@ -74,15 +74,15 @@
     </a>
  </div>
 <div class="col-md-3">
-    <a>
+    <a href="cvu/proyectos">
       <div class="option-block">
           <img src="/img/icons/hist.png">
-          <p>Proyectos</p>
+          <p>Hist. Proyectos</p>
       </div>
         </a>
  </div>
 <div class="col-md-3">
-    <a>
+    <a href="cvu/trabajos">
       <div class="option-block">
           <img src="/img/icons/bussines.png">
           <p>Trabajos</p>
@@ -90,7 +90,7 @@
         </a>
  </div>
 <div class="col-md-3">
-    <a>
+    <a href="cvu/especialidades">
       <div class="option-block">
           <img src="/img/icons/files.png">
           <p>Archivos</p>

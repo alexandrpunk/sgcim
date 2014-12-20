@@ -23,6 +23,12 @@ hr {
 .lateral-well{
    padding: 8px;
 }
+.body-well{
+   padding: 15px;
+}
+.body-well h3{
+   margin-top: 0;
+}
 
 .nav-header{
     padding: 3px 15px;
@@ -64,4 +70,11 @@ margin: 0;
 }
 .option-block img:hover{
     opacity:0.35;
+}
+
+.logo{
+    height: 180px;
+    width: auto;
+    margin-top: -80px;
+    margin-bottom: 20px;
 }
