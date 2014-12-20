@@ -2,10 +2,10 @@
 @section('content')
 <div class="row">
 <div class="col-md-3">
-    <a>
+    <a href="cvu/personal">
       <div class="option-block">
           <img src="/img/icons/man.png">
-          <p>Informacion personal</p>
+          <p>Datos personales</p>
       </div> 
     </a>
  </div>

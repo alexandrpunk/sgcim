@@ -3,7 +3,7 @@
 Route::get('/',array('uses' => 'AuthController@showLogin'));
 
 // Authentication
-Route::get('login', array('as' => 'login', 'uses' => 'AuthController@showLogin'));
+Route::get('login', array('uses' => 'AuthController@showLogin'));
 Route::post('login', 'AuthController@postLogin');
 Route::get('logout', 'AuthController@getLogout');
 
@@ -41,8 +41,15 @@ Route::get('usuarios/{id}', array('uses'=>'UsuariosController@verUsuario'));
 //borra al usuario especificado por el id
 Route::get('usuarios/borrar/{id}', array('uses'=>'UsuariosController@borrarUsuario'));
 
-Route::get('principal',function(){
+Route::get('cvu', array('uses' => 'CVUController@editarcvu'));
 
-        return View::make('cvu.editar');}
+//
+//datos personales
+//se muestran los datos personales existentes
+Route::get('cvu/personal', array('uses' => 'CVUController@listarPersonal'));
 
-);
+//muestra el formulario para llenar datos persoanles
+Route::get('cvu/personal/editar', array('uses' => 'CVUController@editarPersonal'));
+//envia los datos del formulario para crear un usario nuevo
+Route::post('cvu/personal/guardar', array('uses' => 'CVUController@llenarPersonal'));
+

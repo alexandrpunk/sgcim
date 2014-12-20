@@ -5,6 +5,5 @@
 <title>Sistemas</title>
 {{HTML::style('css/bootstrap.min.css')}}
 {{HTML::style('css/markoptic.css')}}
-{{HTML::style('css/glyphicons.css')}}
 {{HTML::style('css/style.css')}}
 
