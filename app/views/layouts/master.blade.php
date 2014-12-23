@@ -7,25 +7,27 @@
 <body>
 
     @if ( Auth::guest())
-                    @show
-                        @yield('content')   
-    
+    <center><img class="logo" src="/img/logo.svg"></center>
+        <div class="container">  
+            <div class="well">
+                @yield('content')   
+            </div>
+            
+        </div>   
     @else
     @include('includes.header') 
-    <div class="container">   
-    </div>
     <div class="container">
-<div class="row">
-    <div class="col-md-3">
-        @include('includes.lateral')   
-    </div>
-    <div class="col-md-9">
-        <div class="well body-well">
-            @show
-            @yield('content')
+        <div class="row">
+            <div class="col-md-3">
+                @include('includes.lateral')   
+            </div>
+            <div class="col-md-9">
+                <div class="well body-well">
+                    @show
+                    @yield('content')
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 </div>
         
         

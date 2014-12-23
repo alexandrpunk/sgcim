@@ -7,8 +7,6 @@
 
 {{-- Content --}}
 @section('content')
-<div class="container">
-    <center><img class="logo" src="/img/logo.svg"></center>
     <div class="row">
     <div class="col-md-5">
         <div class="panel panel-success">
@@ -41,12 +39,9 @@
     </div>
     </div>
     <div class="col-md-7">
-        <div class="well">
+        <p class="text-justify">Susana va a escribir un texto bonito y convincente aqui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim quam quis pellentesque tincidunt. Nullam molestie velit non neque ornare, quis fringilla dui cursus. Phasellus sed diam iaculis, suscipit nunc tincidunt, lacinia purus. Cras ornare sit amet augue nec aliquet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus hendrerit vel lacus ac sagittis. Donec semper, metus et condimentum rhoncus, mi nisi consequat nulla, at mollis urna tortor et ipsum.</p>
             {{ HTML::link('usuarios/nuevo', 'Crear un nuevo usuario (integrate)', array('class'=>'btn btn-primary btn-block')); }}
-        </div>
     </div>
-    </div>
-</div>
- 
+    </div> 
 
 @stop

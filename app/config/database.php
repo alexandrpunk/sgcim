@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'markoptic_cvu',
 			'username'  => 'root',
-			'password'  => '',
+			'password'  => 'root',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_spanish_ci',
 			'prefix'    => '',

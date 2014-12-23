@@ -1,10 +1,33 @@
 <?php 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-class CursosController extends BaseController {
-
-//llenado de la informacion curso
-    public function listarCursos()
-    {
+class CursosController extends BaseController{
+    
+//validador de cursos
+    public function validarCursos($input){
+        $respuesta = array();
+ 
+        $reglas =  array(
+            'nom_curso'  => array('alpha','max:150'),
+            'desc_curso'  => 'alpha_num'
+        );
+        
+        $validator = Validator::make($input, $reglas);
+        
+        if (
+            $validator->fails()){
+            $respuesta['mensaje'] = $validator;
+            $respuesta['error']   = true;
+        }else{                           
+            $respuesta['mensaje'] = 'Producto creado!';
+            $respuesta['error']   = false;
+        }
+        
+        return $respuesta; 
+    }
+    
+    
+     //llenado de la informacion curso
+    public function listarCursos(){
         $id = Auth::user()->id;
         $cursos = Curso::where('id_cvu', '=', $id)->get();
         if($cursos){
@@ -20,6 +43,13 @@ class CursosController extends BaseController {
     }
     
     public function crearCurso(){
+        $validar= $this->validarCursos(Input::all());
+        
+        if($validar['error'] == true){
+           // return Redirect::to('cvu/cursos/nuevo')->withErrors($respuesta['mensaje'] )->withInput();
+             return Redirect::to('cvu/cursos/nuevo');
+        }
+        else{
         $id_cvu = Auth::user()->id;
         $curso = new Curso;
         $curso->id_cvu = $id_cvu;
@@ -27,6 +57,7 @@ class CursosController extends BaseController {
         $curso->desc_curso = Input::get('desc_curso');
         $curso->save();
         return Redirect::to('cvu/cursos');
+        }
  
     }
     
@@ -56,6 +87,6 @@ class CursosController extends BaseController {
         // para buscar al usuario utilizamos el metido find que nos proporciona Laravel 
     
     return Redirect::to('cvu/cursos');
-    }
- 
+    }    
+    
 }
