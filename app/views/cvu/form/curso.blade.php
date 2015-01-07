@@ -1,6 +1,15 @@
 @extends('layouts.master')
- 
 @section('content')
+
+@if( $errors->has() )
+<!-- En caso de que haya un error, entonces los imprimimos y utilizamos algún estilo de bootstrap -->
+<div class="alert alert-danger">
+@foreach($errors->all() as $error)
+* {{$error}}<br/>
+@endforeach
+</div>
+@endif
+
 <h3>Ingrese la informacion de su curso</h3>
 <hr>
 @if(isset($curso))

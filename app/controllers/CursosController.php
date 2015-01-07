@@ -47,7 +47,7 @@ class CursosController extends BaseController{
         
         if($validar['error'] == true){
            // return Redirect::to('cvu/cursos/nuevo')->withErrors($respuesta['mensaje'] )->withInput();
-             return Redirect::to('cvu/cursos/nuevo');
+             return Redirect::to('cvu/cursos/nuevo')->withErrors($validar['mensaje'])->withInput();
         }
         else{
         $id_cvu = Auth::user()->id;
