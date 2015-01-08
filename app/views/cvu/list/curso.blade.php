@@ -1,5 +1,8 @@
 @extends('layouts.master') 
 @section('content')
+@if (Session::get('mensaje'))
+<div class="alert alert-success">{{Session::get('mensaje')}}</div>
+@endif
 <h3>Cursos</h3>
 <hr>
 

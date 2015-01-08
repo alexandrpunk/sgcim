@@ -18,7 +18,7 @@ class CursosController extends BaseController{
             $respuesta['mensaje'] = $validator;
             $respuesta['error']   = true;
         }else{                           
-            $respuesta['mensaje'] = 'Producto creado!';
+            $respuesta['mensaje'] = 'La informacion se a guardado con exito';
             $respuesta['error']   = false;
         }
         
@@ -46,7 +46,6 @@ class CursosController extends BaseController{
         $validar= $this->validarCursos(Input::all());
         
         if($validar['error'] == true){
-           // return Redirect::to('cvu/cursos/nuevo')->withErrors($respuesta['mensaje'] )->withInput();
              return Redirect::to('cvu/cursos/nuevo')->withErrors($validar['mensaje'])->withInput();
         }
         else{
@@ -56,7 +55,7 @@ class CursosController extends BaseController{
         $curso->nom_curso = Input::get('nom_curso');
         $curso->desc_curso = Input::get('desc_curso');
         $curso->save();
-        return Redirect::to('cvu/cursos');
+        return Redirect::to('cvu/cursos')->with('mensaje', $validar['mensaje']);
         }
  
     }
@@ -67,13 +66,21 @@ class CursosController extends BaseController{
     }
     
     public function guardarCurso($id){
+        $validar= $this->validarCursos(Input::all());
+        
+        if($validar['error'] == true){
+             return Redirect::to('cvu/cursos/editar/'.$id)->withErrors($validar['mensaje'])->withInput();
+        }
+        else{ 
         $id_cvu = Auth::user()->id;
         $curso = Curso::find($id);
         $curso->id_cvu = $id_cvu;
         $curso->nom_curso = Input::get('nom_curso');
         $curso->desc_curso = Input::get('desc_curso');
         $curso->save();
-        return Redirect::to('cvu/cursos');
+        return Redirect::to('cvu/cursos')->with('mensaje', $validar['mensaje']);
+        }
+
         }
 
   
