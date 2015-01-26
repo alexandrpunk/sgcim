@@ -3,7 +3,7 @@
 @section('content')
 <h3>Datos personales</h3>
 <hr>
-<dl class="dl-horizontal">
+<dl>
   <dt>Fecha de Nacimiento</dt>
   <dd>{{$personal->fec_nac}}</dd>
     <dt>Edad</dt>

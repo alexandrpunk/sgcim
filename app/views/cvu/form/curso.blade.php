@@ -20,7 +20,7 @@
 
 
 <div class="form-group">
-{{Form::label('nom_curso', 'Nombre de la curso')}}
+{{Form::label('nom_curso', 'Nombre del curso')}}
 {{Form::text('nom_curso', Input::old('nom_curso'), array('class'=>'form-control', 'placeholder'=>'Ingrese el nombre de su curso', 'autocomplete'=>'off'))}} 
 </div>
 

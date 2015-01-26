@@ -7,7 +7,7 @@
 
 {{-- Content --}}
 @section('content')
-    <div class="row">
+    <div class="row ">
     <div class="col-md-5">
         <div class="panel panel-success">
             <div class="panel-heading">
@@ -33,7 +33,7 @@
                 
     <!-- Login button -->
 
-            {{ Form::submit('Iniciar Sesion', array('class' => 'btn btn-success btn-block'))}}
+            {{ Form::submit('Iniciar Sesion', array('class' => 'btn btn-primary btn-block'))}}
             {{ Form::close() }}
         </div>
     </div>
