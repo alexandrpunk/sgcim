@@ -3,7 +3,7 @@
             <p class="text-center">Juan perez</p>
             <p class="text-center small">{{ HTML::link('logout', 'Cerrar Sesion') }}</p>
               <ul class="nav nav-list">
-                                      <li class="nav-divider"></li>
+                <li class="nav-divider"></li>
                 <li class="nav-header"><i class="small glyphicon glyphicon-user" aria-hidden="true"></i> Perfil de usuario</li>
                 <li>
                     <a href="#">
@@ -24,7 +24,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/cvu">
+                    <a href="{{URL::to('cvu');}}">
                         <i class="small glyphicon glyphicon-edit" aria-hidden="true"></i>&nbsp;&nbsp;Editar Curriculum
                     </a>
                 </li>

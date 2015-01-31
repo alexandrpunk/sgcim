@@ -7,8 +7,7 @@ class CursosController extends BaseController{
         $respuesta = array();
  
         $reglas =  array(
-            'nom_curso'  => array('alpha','max:150'),
-            'desc_curso'  => 'alpha_num'
+            'nom_curso'  => 'max:150'
         );
         
         $validator = Validator::make($input, $reglas);
@@ -30,12 +29,9 @@ class CursosController extends BaseController{
     public function listarCursos(){
         $id = Auth::user()->id;
         $cursos = Curso::where('id_cvu', '=', $id)->get();
-        if($cursos){
-            return View::make('cvu.list.curso',array('cursos'=> $cursos));
-        }
-        else{
-             return View::make('cvu.form.curso');
-        } 
+        
+        return View::make('cvu.list.curso',array('cursos'=> $cursos));
+
     }
       
     public function agregarCurso(){
@@ -93,7 +89,7 @@ class CursosController extends BaseController{
         $curso->delete();
         // para buscar al usuario utilizamos el metido find que nos proporciona Laravel 
     
-    return Redirect::to('cvu/cursos');
+    return Redirect::to('cvu/cursos')->with('info', $info="Se ha borrado la informacion con exito");
     }    
     
 }

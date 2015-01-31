@@ -1,16 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-@if( $errors->has() )
-<!-- En caso de que haya un error, entonces los imprimimos y utilizamos algún estilo de bootstrap -->
-<div class="alert alert-danger">
-@foreach($errors->all() as $error)
-* {{$error}}<br/>
-@endforeach
-</div>
-@endif
-
-<h3>Ingrese la informacion de su curso</h3>
+<h3><a href="{{URL::to('cvu/cursos');}}" title="Regresar" class="small text-primary"><i class="glyphicon glyphicon glyphicon-chevron-left"></i>&nbsp;</a>Ingrese la informacion de su curso</h3>
 <hr>
 @if(isset($curso))
     {{Form::model($curso, array('url' => 'cvu/cursos/editar/guardar/'.$curso->id, 'autocomplete'=>'off'))}}

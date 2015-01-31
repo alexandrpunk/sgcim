@@ -8,7 +8,7 @@ class AuthController extends BaseController {
         if (Auth::check())
         {
             // Redirect to homepage
-            return Redirect::to('perfiles')->with('success', 'You are already logged in');
+            return Redirect::to('usuarios')->with('success', 'You are already logged in');
         }
 
         // Show the login page

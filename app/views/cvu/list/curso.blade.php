@@ -1,15 +1,13 @@
 @extends('layouts.master') 
 @section('content')
-@if (Session::get('mensaje'))
-<div class="alert alert-success">{{Session::get('mensaje')}}</div>
-@endif
-<h3>Cursos</h3>
+
+<h3><a href="{{URL::to('cvu');}}" title="Regresar" class="small text-primary"><i class="glyphicon glyphicon glyphicon-chevron-left"></i>&nbsp;</a>Cursos</h3>
 <hr>
 
 <dl>
 @foreach($cursos as $curso)
-<dt class="text-uppercase">{{$curso->nom_curso}}</dt>
-<dd>{{$curso->desc_curso}} </dd><br>
+<dt class="text-uppercase">{{{$curso->nom_curso}}}</dt>
+<dd>{{{$curso->desc_curso}}} </dd><br>
 <div class="form-group">
 {{ HTML::link( 'cvu/cursos/editar/'.$curso->id , 'Editar', array('class'=>'btn btn-xs btn-info')) }}
 {{ HTML::link( 'cvu/cursos/borrar/'.$curso->id , 'Borrar', array('class'=>'btn btn-xs btn-danger')) }}

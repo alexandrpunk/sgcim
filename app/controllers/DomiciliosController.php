@@ -18,6 +18,7 @@ class DomiciliosController extends BaseController {
     public function agregarDomicilio(){
         return View::make('cvu.form.domicilio');         
     }
+    
     public function crearDomicilio(){
         $id_cvu = Auth::user()->id;
         $domicilio = new Domicilio;

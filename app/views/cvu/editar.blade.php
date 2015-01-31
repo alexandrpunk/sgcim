@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<div class="row">
+<div class="row nulink">
 <div class="col-md-3">
     <a href="cvu/personal">
       <div class="option-block">
@@ -10,7 +10,7 @@
     </a>
  </div>
 <div class="col-md-3">
-    <a href="cvu/domicilios">
+    <a href="cvu/domicilios" >
       <div class="option-block">
           <img src="/img/icons/address.png">
           <p>Direcciones</p>

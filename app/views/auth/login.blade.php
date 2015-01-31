@@ -19,16 +19,14 @@
     <!-- Name -->
     <div class="input-group" style="margin-bottom:10px">
             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-            {{ Form::text('email', Input::old('email'), array('class' => 'form-control', 'placeholder' => 'Correo Electronico')) }}
-            {{ $errors->first('email') }}
-    </div>
-
+            {{ Form::email('email', Input::old('email'), array('class' => 'form-control', 'placeholder' => 'Correo Electronico')) }}
+    </div>{{ $errors->first('email') }}
     <!-- Password -->
     <div class="input-group" style="margin-bottom:10px">
             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
             {{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Contraseña')) }}
-            {{ $errors->first('password') }}
-    </div>
+           
+    </div>{{ $errors->first('password') }}
             <label>{{ Form::checkbox('recordar')}} Recordar mis datos</label>
                 
     <!-- Login button -->

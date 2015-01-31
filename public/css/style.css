@@ -56,9 +56,27 @@ background-color:transparent;
     margin: 10px;
     padding: 5px;
     font-weight: bolder;
-    font-size: 0.9em;
+    font-size: 0.95em;
     background-color: #eaeaea;
+
 }
+
+.option-block:hover{
+    background-color:  #e3e3e3;
+}
+
+a.option-block {
+    display: block;
+}
+
+.nulink a:hover, a:focus{
+    text-decoration: none;
+    color: #31A463;
+
+}
+
+
+
 .option-block p{
 margin: 0;
 }
@@ -68,9 +86,7 @@ margin: 0;
     height: 80px;
     opacity:0.2;
 }
-.option-block img:hover{
-    opacity:0.35;
-}
+
 
 .logo{
     height: 180px;
