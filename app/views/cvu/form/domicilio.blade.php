@@ -1,7 +1,7 @@
 @extends('layouts.master')
  
 @section('content')
-<h3>Ingrese los datos de su domicilio</h3>
+<h3 class="nulink"><a href="{{URL::to('cvu/domicilios');}}" title="Regresar" class=" small text-primary"><i class="glyphicon glyphicon glyphicon-chevron-left"></i>&nbsp;</a>Ingrese los datos de su domicilio</h3>
 <hr>
 @if(isset($domicilio))
     {{Form::model($domicilio, array('url' => 'cvu/domicilios/editar/guardar/'.$domicilio->id, 'autocomplete'=>'off'))}}

@@ -13,7 +13,7 @@
     <a href="cvu/domicilios" >
       <div class="option-block">
           <img src="/img/icons/address.png">
-          <p>Direcciones</p>
+          <p>Domicilios</p>
       </div>
     </a>
  </div>

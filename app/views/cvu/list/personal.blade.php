@@ -1,7 +1,7 @@
 @extends('layouts.master')
  
 @section('content')
-<h3><a href="{{URL::to('cvu');}}" title="Regresar" class="small text-primary"><i class="glyphicon glyphicon glyphicon-chevron-left"></i>&nbsp;</a>Datos personales</h3>
+<h3 class="nulink"><a href="{{URL::to('cvu');}}" title="Regresar" class="small text-primary"><i class="glyphicon glyphicon glyphicon-chevron-left"></i>&nbsp;</a>Datos personales</h3>
 <hr>
 <dl>
   <dt>Fecha de Nacimiento</dt>
