@@ -22,7 +22,7 @@
         <div class="col-md-3">
             <div class="form-group">
             {{Form::label('edad', 'Edad', array('class' => 'small'))}}
-            {{Form::number('edad', Input::old('edad'), array('class'=>'form-control', 'placeholder'=>'Ingrese su edad', 'autocomplete'=>'off', 'min'=>'10', 'max'=>'100', 'max'=> '99'))}} 
+            {{Form::number('edad', Input::old('edad'), array('class'=>'form-control', 'placeholder'=>'Ingrese su edad', 'autocomplete'=>'off', 'max'=> '99'))}} 
             </div>
         </div>
         <div class="col-md-3">

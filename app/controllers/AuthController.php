@@ -8,11 +8,11 @@ class AuthController extends BaseController {
         if (Auth::check())
         {
             // Redirect to homepage
-            return Redirect::to('usuarios')->with('success', 'You are already logged in');
+            return Redirect::to('usuarios');
         }
 
         // Show the login page
-        return View::make('auth/login');
+        return View::make('auth.login');
     }
 
     public function postLogin()
@@ -40,7 +40,7 @@ class AuthController extends BaseController {
             if (Auth::attempt($userdata, $remember))
             {
                 // Redirect to homepage
-                return Redirect::to('perfiles')->with('success', 'You have logged in successfully');
+                return Redirect::to('usuarios')->with('info', 'Haz iniciado sesion');
             }
             else
             {
@@ -59,6 +59,6 @@ class AuthController extends BaseController {
         Auth::logout();
 
         // Redirect to homepage
-        return Redirect::to('login')->with('success', 'You are logged out');
+        return Redirect::to('login')->with('info', 'Haz cerrado sesion');
     }
 }

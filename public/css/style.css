@@ -91,12 +91,20 @@ margin: 0;
 .logo{
     height: 180px;
     width: auto;
-    margin-top: -80px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 .text-justify{
     text-align: justify;
 }
 .label-as-badge {
     border-radius: 1em;
+}
+
+h5 a{
+    color: black;
+    margin-bottom: 0px;
+}
+h5 a:hover, a:focus{
+    text-decoration: none;
+    color: black;
 }

@@ -1,7 +1,14 @@
 <div class="well lateral-well">
-                <img class="img-circle center-block" src="http://placehold.it/150">
-            <p class="text-center">Juan perez</p>
-            <p class="text-center small">{{ HTML::link('logout', 'Cerrar Sesion') }}</p>
+               
+<div class="media">
+  <div class="media-left ">
+      <img class="img-circle" src="http://placehold.it/90" alt="display">
+  </div>
+  <div class="media-body media-middle ">
+  <h5 class="text-capitalize"><strong>{{ HTML::link('/', Auth::user()->nombre.' '.Auth::user()->apellidos) }}</strong></h5>
+      <h6 class="nulink"><strong>{{ HTML::link('logout', 'Cerrar Sesion') }}</strong></h6>
+  </div>
+</div>
               <ul class="nav nav-list">
                 <li class="nav-divider"></li>
                 <li class="nav-header"><i class="small glyphicon glyphicon-user" aria-hidden="true"></i> Perfil de usuario</li>

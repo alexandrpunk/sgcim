@@ -12,7 +12,7 @@
 
 <div class="form-group">
 {{Form::label('nom_dom', 'Nombre del Domicilio')}}
-{{Form::text('nom_dom', Input::old('nom_dom'), array('class'=>'form-control', 'placeholder'=>'Ingrese el nombre del domicilio', 'autocomplete'=>'off'))}} 
+{{Form::text('nom_dom', Input::old('nom_dom'), array('class'=>'form-control', 'placeholder'=>'Ingrese el nombre del domicilio', 'autocomplete'=>'off', 'maxlength'=>'100'))}} 
 </div>
 
 <div class="form-group">
@@ -24,25 +24,25 @@
     <div class="col-md-6">
         <div class="form-group">
         {{Form::label('ciudad', 'Ciudad')}}
-        {{Form::text('ciudad', Input::old('ciudad'), array('class'=>'form-control', 'placeholder'=>'Ingrese la ciudad', 'autocomplete'=>'off'))}} 
+        {{Form::text('ciudad', Input::old('ciudad'), array('class'=>'form-control', 'placeholder'=>'Ingrese la ciudad', 'autocomplete'=>'off', 'maxlength'=>'150'))}} 
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
         {{Form::label('municipio', 'Municipio')}}
-        {{Form::text('municipio', Input::old('municipio'), array('class'=>'form-control', 'placeholder'=>'Ingrese el municipio', 'autocomplete'=>'off'))}} 
+        {{Form::text('municipio', Input::old('municipio'), array('class'=>'form-control', 'placeholder'=>'Ingrese el municipio', 'autocomplete'=>'off', 'maxlength'=>'150'))}} 
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
         {{Form::label('estado', 'Estado')}}
-        {{Form::text('estado', Input::old('estado'), array('class'=>'form-control', 'placeholder'=>'Ingrese el estadoo', 'autocomplete'=>'off'))}} 
+        {{Form::text('estado', Input::old('estado'), array('class'=>'form-control', 'placeholder'=>'Ingrese el estadoo', 'autocomplete'=>'off', 'maxlength'=>'150'))}} 
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
         {{Form::label('pais', 'Pais')}}
-        {{Form::text('pais', Input::old('pais'), array('class'=>'form-control', 'placeholder'=>'Ingrese el pais', 'autocomplete'=>'off'))}} 
+        {{Form::text('pais', Input::old('pais'), array('class'=>'form-control', 'placeholder'=>'Ingrese el pais', 'autocomplete'=>'off', 'maxlength'=>'150'))}} 
         </div>
     </div>
 </div> 

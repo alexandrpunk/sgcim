@@ -45,9 +45,8 @@ class CursosController extends BaseController{
              return Redirect::to('cvu/cursos/nuevo')->withErrors($validar['mensaje'])->withInput();
         }
         else{
-        $id_cvu = Auth::user()->id;
         $curso = new Curso;
-        $curso->id_cvu = $id_cvu;
+        $curso->id_cvu = Auth::user()->id;
         $curso->nom_curso = Input::get('nom_curso');
         $curso->desc_curso = Input::get('desc_curso');
         $curso->save();
@@ -68,9 +67,7 @@ class CursosController extends BaseController{
              return Redirect::to('cvu/cursos/editar/'.$id)->withErrors($validar['mensaje'])->withInput();
         }
         else{ 
-        $id_cvu = Auth::user()->id;
         $curso = Curso::find($id);
-        $curso->id_cvu = $id_cvu;
         $curso->nom_curso = Input::get('nom_curso');
         $curso->desc_curso = Input::get('desc_curso');
         $curso->save();

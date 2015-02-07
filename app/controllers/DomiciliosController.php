@@ -2,6 +2,33 @@
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 class DomiciliosController extends BaseController {
 
+//validador de domicilios
+    public function validarDomicilios($input){
+        $respuesta = array();
+ 
+        $reglas =  array(
+            'nom_dom'  => 'max:100',
+            'ciudad'  => 'max:150',
+            'municipio'  => 'max:150',
+            'estado'  => 'max:150',
+            'pais'  => 'max:150'
+        );
+        
+        $validator = Validator::make($input, $reglas);
+        
+        if (
+            $validator->fails()){
+            $respuesta['mensaje'] = $validator;
+            $respuesta['error']   = true;
+        }else{                           
+            $respuesta['mensaje'] = 'La informacion se a guardado con exito';
+            $respuesta['error']   = false;
+        }
+        
+        return $respuesta; 
+    }
+    
+
 //llenado de la informacion domicilio
     public function listarDomicilios()
     {
@@ -20,9 +47,14 @@ class DomiciliosController extends BaseController {
     }
     
     public function crearDomicilio(){
-        $id_cvu = Auth::user()->id;
+        $validar= $this->validarDomicilios(Input::all());
+        
+        if($validar['error'] == true){
+             return Redirect::to('cvu/domicilios/nuevo')->withErrors($validar['mensaje'])->withInput();
+        }
+        else{
         $domicilio = new Domicilio;
-        $domicilio->id_cvu = $id_cvu;
+        $domicilio->id_cvu = Auth::user()->id;
         $domicilio->nom_dom = Input::get('nom_dom');
         $domicilio->domicilio = Input::get('domicilio');
         $domicilio->ciudad = Input::get('ciudad');
@@ -30,7 +62,8 @@ class DomiciliosController extends BaseController {
         $domicilio->estado = Input::get('estado');
         $domicilio->pais = Input::get('pais');
         $domicilio->save();
-        return Redirect::to('cvu/domicilios');
+        return Redirect::to('cvu/domicilios')->with('mensaje', $validar['mensaje']);
+        }
  
     }
     
@@ -40,9 +73,13 @@ class DomiciliosController extends BaseController {
     }
     
     public function guardarDomicilio($id){
-        $id_cvu = Auth::user()->id;
+                $validar= $this->validarDomicilios(Input::all());
+        
+        if($validar['error'] == true){
+             return Redirect::to('cvu/domicilios/nuevo')->withErrors($validar['mensaje'])->withInput();
+        }
+        else{
         $domicilio = Domicilio::find($id);
-        $domicilio->id_cvu = $id_cvu;
         $domicilio->nom_dom = Input::get('nom_dom');
         $domicilio->domicilio = Input::get('domicilio');
         $domicilio->ciudad = Input::get('ciudad');
@@ -50,7 +87,8 @@ class DomiciliosController extends BaseController {
         $domicilio->estado = Input::get('estado');
         $domicilio->pais = Input::get('pais');
         $domicilio->save();
-        return Redirect::to('cvu/domicilios');
+        return Redirect::to('cvu/domicilios')->with('mensaje', $validar['mensaje']);
+        }
         }
 
   
@@ -63,7 +101,7 @@ class DomiciliosController extends BaseController {
         $domicilio->delete();
         // para buscar al usuario utilizamos el metido find que nos proporciona Laravel 
     
-    return Redirect::to('cvu/domicilios');
+    return Redirect::to('cvu/domicilios')->with('info', $info="Se ha borrado la informacion con exito");
     }
  
 }
