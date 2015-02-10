@@ -76,7 +76,7 @@ class DomiciliosController extends BaseController {
                 $validar= $this->validarDomicilios(Input::all());
         
         if($validar['error'] == true){
-             return Redirect::to('cvu/domicilios/nuevo')->withErrors($validar['mensaje'])->withInput();
+             return Redirect::to('cvu/domicilios/editar/'.$id)->withErrors($validar['mensaje'])->withInput();
         }
         else{
         $domicilio = Domicilio::find($id);
@@ -89,7 +89,7 @@ class DomiciliosController extends BaseController {
         $domicilio->save();
         return Redirect::to('cvu/domicilios')->with('mensaje', $validar['mensaje']);
         }
-        }
+    }
 
   
     

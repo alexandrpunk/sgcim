@@ -13,6 +13,10 @@ class Usuario extends Eloquent implements UserInterface, RemindableInterface { /
         return $this->belongsTo('Perfil', 'id_perfil');
     }
     
+     public function cvu(){
+        return $this->hasOne('Personal', 'id');
+    }
+    
     protected $table = 'Usuarios';
     protected $hidden = array('password', 'remember_token');
     protected $fillable = array('nombre', 'apellidos', 'sexo', 'email', 'password', 'id_perfil');
