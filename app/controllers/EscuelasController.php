@@ -48,9 +48,8 @@ class EscuelasController extends BaseController {
              return Redirect::to('cvu/escuelas/nuevo')->withErrors($validar['mensaje'])->withInput();
         }
         else{
-        $id_cvu = Auth::user()->id;
         $escuela = new Escuela;
-        $escuela->id_cvu = $id_cvu;
+        $escuela->id_cvu = Auth::user()->id;
         $escuela->nom_esc = Input::get('nom_esc');
         $escuela->nivel_esc = Input::get('nivel_esc');
         $escuela->save();

@@ -1,7 +1,7 @@
 @extends('layouts.master')
  
 @section('content')
-<h3>Ingrese la informacion referente a sus titulos profesionales</h3>
+<h3 class="nulink"><a href="{{URL::to('cvu/titulos');}}" title="Regresar" class="small text-primary"><i class="glyphicon glyphicon glyphicon-chevron-left"></i>&nbsp;</a>Ingrese la informacion referente a sus titulos profesionales</h3>
 <hr>
 @if(isset($titulo))
     {{Form::model($titulo, array('url' => 'cvu/titulos/editar/guardar/'.$titulo->id, 'autocomplete'=>'off'))}}

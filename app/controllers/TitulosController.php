@@ -1,6 +1,29 @@
 <?php 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 class TitulosController extends BaseController {
+    
+    public function validarTitulos($input){
+        $respuesta = array();
+ 
+        $reglas =  array(
+            'nom_titulo'  => 'max:150',
+            'tipo_titulo' => 'max:45'
+        );
+        
+        $validator = Validator::make($input, $reglas);
+        
+        if (
+            $validator->fails()){
+            $respuesta['mensaje'] = $validator;
+            $respuesta['error']   = true;
+        }else{                           
+            $respuesta['mensaje'] = 'La informacion se a guardado con exito';
+            $respuesta['error']   = false;
+        }
+        
+        return $respuesta; 
+    }
+        
 
 //llenado de la informacion titulo
     public function listarTitulos()
@@ -20,14 +43,20 @@ class TitulosController extends BaseController {
     }
     
     public function crearTitulo(){
-        $id_cvu = Auth::user()->id;
+         $validar= $this->validarTitulos(Input::all());
+        
+        if($validar['error'] == true){
+             return Redirect::to('cvu/titulos/nuevo')->withErrors($validar['mensaje'])->withInput();
+        }
+        else{
         $titulo = new Titulo;
-        $titulo->id_cvu = $id_cvu;
+        $titulo->id_cvu = Auth::user()->id;
         $titulo->nom_titulo = Input::get('nom_titulo');
         $titulo->tipo_titulo = Input::get('tipo_titulo');
         $titulo->desc_titulo = Input::get('desc_titulo');
         $titulo->save();
-        return Redirect::to('cvu/titulos');
+        return Redirect::to('cvu/titulos')->with('mensaje', $validar['mensaje']);
+        }
  
     }
     
@@ -37,14 +66,20 @@ class TitulosController extends BaseController {
     }
     
     public function guardarTitulo($id){
-        $id_cvu = Auth::user()->id;
+         $validar= $this->validarTitulos(Input::all());
+        
+        if($validar['error'] == true){
+             return Redirect::to('cvu/titulos/editar/'.$id)->withErrors($validar['mensaje'])->withInput();
+        }
+        else{
         $titulo = Titulo::find($id);
-        $titulo->id_cvu = $id_cvu;
+        $titulo->id_cvu =Auth::user()->id;
         $titulo->nom_titulo = Input::get('nom_titulo');
         $titulo->tipo_titulo = Input::get('tipo_titulo');
         $titulo->desc_titulo = Input::get('desc_titulo');
         $titulo->save();
-        return Redirect::to('cvu/titulos');
+        return Redirect::to('cvu/titulos')->with('mensaje', $validar['mensaje']);
+        }
         }
 
   
@@ -57,7 +92,8 @@ class TitulosController extends BaseController {
         $titulo->delete();
         // para buscar al usuario utilizamos el metido find que nos proporciona Laravel 
     
-    return Redirect::to('cvu/titulos');
+    return Redirect::to('cvu/titulos')->with('info', $info="Se ha borrado la informacion con exito");
+    
     }
  
 }
