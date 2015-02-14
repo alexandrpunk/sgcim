@@ -27,8 +27,7 @@ class CursosController extends BaseController{
     
      //llenado de la informacion curso
     public function listarCursos(){
-        $id = Auth::user()->id;
-        $cursos = Curso::where('id_cvu', '=', $id)->get();
+        $cursos = Curso::where('id_cvu', '=', Auth::user()->id)->get();
         
         return View::make('cvu.list.curso',array('cursos'=> $cursos));
 

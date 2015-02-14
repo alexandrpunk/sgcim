@@ -28,8 +28,7 @@ class TitulosController extends BaseController {
 //llenado de la informacion titulo
     public function listarTitulos()
     {
-        $id = Auth::user()->id;
-        $titulos = Titulo::where('id_cvu', '=', $id)->get();
+        $titulos = Titulo::where('id_cvu', '=', Auth::user()->id)->get();
         if($titulos){
             return View::make('cvu.list.titulo',array('titulos'=> $titulos));
         }
@@ -73,17 +72,16 @@ class TitulosController extends BaseController {
         }
         else{
         $titulo = Titulo::find($id);
-        $titulo->id_cvu =Auth::user()->id;
         $titulo->nom_titulo = Input::get('nom_titulo');
         $titulo->tipo_titulo = Input::get('tipo_titulo');
         $titulo->desc_titulo = Input::get('desc_titulo');
         $titulo->save();
         return Redirect::to('cvu/titulos')->with('mensaje', $validar['mensaje']);
         }
-        }
+    }
 
   
-    
+
      public function borrarTitulo($id){
     // en este método podemos observar como se recibe un parámetro llamado id
     // este es el id del usuario que se desea buscar y se debe declarar en la ruta como un parámetro 

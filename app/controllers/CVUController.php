@@ -14,11 +14,9 @@ class CVUController extends BaseController {
 //llenado de la informacion personal
     public function listarPersonal()
     {
-        $id = Auth::user()->id;
-        $perfil = Auth::user()->perfil->nom_perfil;
-        if(Personal::find($id)){
-            $personal = Personal::find($id);
-            return View::make('cvu.list.personal',array('personal'=> $personal))->with('perfil', $perfil);
+        if(Personal::find(Auth::user()->id)){
+            $personal = Personal::find(Auth::user()->id);
+            return View::make('cvu.list.personal',array('personal'=> $personal))->with('perfil', Auth::user()->perfil->nom_perfil);
         }
         else{
              return View::make('cvu.form.personal');
@@ -32,8 +30,8 @@ class CVUController extends BaseController {
         $reglas =  array(
             'fec_nac' => 'date_format:"Y-m-d"',
             'edad' => array('numeric', 'max:99'),
-            'curp' => array('alpha_dash', 'max:18'),
-            'rfc' => array('alpha_dash', 'max:13'),
+            'curp' => array('alpha_num', 'max:18'),
+            'rfc' => array('alpha_num', 'max:13'),
             'disp_horario' => 'max:45',
             'viajar' => array('alpha', 'max:2'),
             'conacyt' => array('alpha', 'max:2')
@@ -56,14 +54,13 @@ class CVUController extends BaseController {
     public function llenarPersonal()
     {
         $validar= $this->validarPersonal(Input::all());
-        $id = Auth::user()->id;
-        
+
         if($validar['error'] == true){
              return Redirect::to('cvu/personal/editar')->withErrors($validar['mensaje'])->withInput();
         }
         else{        
-        if(Personal::find($id)){            
-        $personal = Personal::find($id);
+        if(Personal::find(Auth::user()->id)){            
+        $personal = Personal::find(Auth::user()->id);
         $personal->fec_nac = Input::get('fec_nac');
         $personal->edad = Input::get('edad');
         $personal->curp = Input::get('curp');
@@ -76,7 +73,7 @@ class CVUController extends BaseController {
         }
         else{
         $personal = new Personal;
-        $personal->id = $id;
+        $personal->id = Auth::user()->id;
         $personal->fec_nac = Input::get('fec_nac');
         $personal->edad = Input::get('edad');
         $personal->curp = Input::get('curp');
@@ -94,10 +91,9 @@ class CVUController extends BaseController {
     
         public function editarPersonal()
     {
-        $id = Auth::user()->id;
-        if(Personal::find($id)){
+        if(Personal::find(Auth::user()->id)){
             
-        $personal = Personal::find($id);
+        $personal = Personal::find(Auth::user()->id);
         return View::make('cvu.form.personal',array('personal'=> $personal));
            
         }

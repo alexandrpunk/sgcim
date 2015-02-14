@@ -12,13 +12,13 @@
     <div class="col-md-3">
         <div class="form-group">
 {{Form::label('tipo_titulo', 'Tipo del titulo')}}
-{{Form::text('tipo_titulo', Input::old('tipo_titulo'), array('class'=>'form-control', 'placeholder'=>'Ingrese el tipo de titulo', 'autocomplete'=>'off'))}} 
+{{Form::text('tipo_titulo', Input::old('tipo_titulo'), array('class'=>'form-control', 'placeholder'=>'Ingrese el tipo de titulo', 'autocomplete'=>'off', 'maxlength'=>'45'))}} 
         </div>
     </div>
     <div class="col-md-9">
         <div class="form-group">
 {{Form::label('nom_titulo', 'Nombre del Titulo Profesional')}}
-{{Form::text('nom_titulo', Input::old('nom_titulo'), array('class'=>'form-control', 'placeholder'=>'Ingrese el nombre del titulo profesional', 'autocomplete'=>'off'))}} 
+{{Form::text('nom_titulo', Input::old('nom_titulo'), array('class'=>'form-control', 'placeholder'=>'Ingrese el nombre del titulo profesional', 'autocomplete'=>'off', 'maxlength'=>'150'))}} 
         </div>
     </div>
 </div>

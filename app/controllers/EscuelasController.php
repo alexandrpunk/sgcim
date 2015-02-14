@@ -27,8 +27,8 @@ class EscuelasController extends BaseController {
 //llenado de la informacion escuela
     public function listarEscuelas()
     {
-        $id = Auth::user()->id;
-        $escuelas = Escuela::where('id_cvu', '=', $id)->get();
+        $id = 
+        $escuelas = Escuela::where('id_cvu', '=', Auth::user()->id)->get();
         if($escuelas){
             return View::make('cvu.list.escuela',array('escuelas'=> $escuelas));
         }
@@ -70,9 +70,7 @@ class EscuelasController extends BaseController {
              return Redirect::to('cvu/escuelas/editar/'.$id)->withErrors($validar['mensaje'])->withInput();
         }
         else{
-        $id_cvu = Auth::user()->id;
         $escuela = Escuela::find($id);
-        $escuela->id_cvu = $id_cvu;
         $escuela->nom_esc = Input::get('nom_esc');
         $escuela->nivel_esc = Input::get('nivel_esc');
         $escuela->save();

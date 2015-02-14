@@ -32,8 +32,7 @@ class DomiciliosController extends BaseController {
 //llenado de la informacion domicilio
     public function listarDomicilios()
     {
-        $id = Auth::user()->id;
-        $domicilios = Domicilio::where('id_cvu', '=', $id)->get();
+        $domicilios = Domicilio::where('id_cvu', '=', Auth::user()->id)->get();
         if($domicilios){
             return View::make('cvu.list.domicilio',array('domicilios'=> $domicilios));
         }
@@ -73,7 +72,7 @@ class DomiciliosController extends BaseController {
     }
     
     public function guardarDomicilio($id){
-                $validar= $this->validarDomicilios(Input::all());
+        $validar= $this->validarDomicilios(Input::all());
         
         if($validar['error'] == true){
              return Redirect::to('cvu/domicilios/editar/'.$id)->withErrors($validar['mensaje'])->withInput();
