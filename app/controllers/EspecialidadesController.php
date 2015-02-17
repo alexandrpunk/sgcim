@@ -1,12 +1,33 @@
 <?php 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 class EspecialidadesController extends BaseController {
+    
+    //validador de especialidades
+    public function validarEspecialidades($input){
+        $respuesta = array();
+ 
+        $reglas =  array(
+            'nom_esp'  => 'max:150'
+        );
+        
+        $validator = Validator::make($input, $reglas);
+        
+        if (
+            $validator->fails()){
+            $respuesta['mensaje'] = $validator;
+            $respuesta['error']   = true;
+        }else{                           
+            $respuesta['mensaje'] = 'La informacion se a guardado con exito';
+            $respuesta['error']   = false;
+        }
+        
+        return $respuesta; 
+    }
 
 //llenado de la informacion especialidad
     public function listarEspecialidades()
     {
-        $id = Auth::user()->id;
-        $especialidades = Especialidad::where('id_cvu', '=', $id)->get();
+        $especialidades = Especialidad::where('id_cvu', '=',  Auth::user()->id)->get();
         if($especialidades){
             return View::make('cvu.list.especialidad',array('especialidades'=> $especialidades));
         }
@@ -20,13 +41,19 @@ class EspecialidadesController extends BaseController {
     }
     
     public function crearEspecialidad(){
-        $id_cvu = Auth::user()->id;
+        $validar= $this->validarEspecialidades(Input::all());
+        
+        if($validar['error'] == true){
+             return Redirect::to('cvu/especialidades/nuevo')->withErrors($validar['mensaje'])->withInput();
+        }
+        else{ 
         $especialidad = new Especialidad;
-        $especialidad->id_cvu = $id_cvu;
+        $especialidad->id_cvu = Auth::user()->id;
         $especialidad->nom_esp = Input::get('nom_esp');
         $especialidad->desc_esp = Input::get('desc_esp');
         $especialidad->save();
-        return Redirect::to('cvu/especialidades');
+        return Redirect::to('cvu/especialidades')->with('mensaje', $validar['mensaje']);
+        }
  
     }
     
@@ -36,14 +63,19 @@ class EspecialidadesController extends BaseController {
     }
     
     public function guardarEspecialidad($id){
-        $id_cvu = Auth::user()->id;
+        $validar= $this->validarEspecialidades(Input::all());
+        
+        if($validar['error'] == true){
+             return Redirect::to('cvu/especialidades/editar/'.$id)->withErrors($validar['mensaje'])->withInput();
+        }
+        else{ 
         $especialidad = Especialidad::find($id);
-        $especialidad->id_cvu = $id_cvu;
         $especialidad->nom_esp = Input::get('nom_esp');
         $especialidad->desc_esp = Input::get('desc_esp');
         $especialidad->save();
-        return Redirect::to('cvu/especialidades');
+        return Redirect::to('cvu/especialidades')->with('mensaje', $validar['mensaje']);
         }
+    }
 
   
     
@@ -55,7 +87,7 @@ class EspecialidadesController extends BaseController {
         $especialidad->delete();
         // para buscar al usuario utilizamos el metido find que nos proporciona Laravel 
     
-    return Redirect::to('cvu/especialidades');
+    return Redirect::to('cvu/especialidades')->with('info', $info="Se ha borrado la informacion con exito");
     }
  
 }
