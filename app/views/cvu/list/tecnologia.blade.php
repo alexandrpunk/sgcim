@@ -1,12 +1,13 @@
 @extends('layouts.master') 
 @section('content')
-<h3>Tecnologias</h3>
+
+<h3 class="nulink"><a href="{{URL::to('cvu');}}" title="Regresar" class="small text-primary"><i class="glyphicon glyphicon glyphicon-chevron-left"></i>&nbsp;</a>Tecnologias</h3>
 <hr>
 
 <dl>
 @foreach($tecnologias as $tecnologia)
-<dt class="text-uppercase">{{$tecnologia->nom_tec}}</dt>
-<dd>{{$tecnologia->desc_tec}}</dd><br>
+<dt class="text-uppercase">{{{$tecnologia->nom_tec}}}</dt>
+<dd>{{{$tecnologia->desc_tec}}}</dd><br>
 <div class="form-group">
 {{ HTML::link( 'cvu/tecnologias/editar/'.$tecnologia->id , 'Editar', array('class'=>'btn btn-xs btn-info')) }}
 {{ HTML::link( 'cvu/tecnologias/borrar/'.$tecnologia->id , 'Borrar', array('class'=>'btn btn-xs btn-danger')) }}

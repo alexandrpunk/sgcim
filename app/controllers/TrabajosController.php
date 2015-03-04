@@ -3,10 +3,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 class TrabajosController extends BaseController {
 
 //llenado de la informacion trabajo
-    public function listarTrabajos()
-    {
-        $id = Auth::user()->id;
-        $trabajos = Trabajo::where('id_cvu', '=', $id)->get();
+    public function listarTrabajos(){
+        $trabajos = Trabajo::where('id_cvu', '=', Auth::user()->id)->get();
         if($trabajos){
             return View::make('cvu.list.trabajo',array('trabajos'=> $trabajos));
         }
@@ -20,10 +18,10 @@ class TrabajosController extends BaseController {
     }
     
     public function crearTrabajo(){
-        $id_cvu = Auth::user()->id;
         $trabajo = new Trabajo;
-        $trabajo->id_cvu = $id_cvu;
-        $trabajo->nom_trabajo = Input::get('nom_trabajo');
+        $trabajo->id_cvu = Auth::user()->id;
+        $trabajo->lugar_trabajo = Input::get('lugar_trabajo');
+        $trabajo->puesto_trabajo = Input::get('puesto_trabajo');
         $trabajo->jefe_trabajo = Input::get('jefe_trabajo');
         $trabajo->sigue_trabajo = Input::get('sigue_trabajo');
         $trabajo->tiempo_trabajo = Input::get('tiempo_trabajo');
@@ -39,10 +37,9 @@ class TrabajosController extends BaseController {
     }
     
     public function guardarTrabajo($id){
-        $id_cvu = Auth::user()->id;
         $trabajo = Trabajo::find($id);
-        $trabajo->id_cvu = $id_cvu;
-        $trabajo->nom_trabajo = Input::get('nom_trabajo');
+        $trabajo->lugar_trabajo = Input::get('lugar_trabajo');
+        $trabajo->puesto_trabajo = Input::get('puesto_trabajo');
         $trabajo->jefe_trabajo = Input::get('jefe_trabajo');
         $trabajo->sigue_trabajo = Input::get('sigue_trabajo');
         $trabajo->tiempo_trabajo = Input::get('tiempo_trabajo');

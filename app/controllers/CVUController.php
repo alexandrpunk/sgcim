@@ -1,19 +1,17 @@
 <?php 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-class CVUController extends BaseController {
+class CVUController extends BaseController{
  
 
-    public function editarcvu()
-    {
+    public function editarcvu(){
         
-        return View::make('cvu.editar');
+        return View::make('cvu.cvu');
         
     }
 
     
 //llenado de la informacion personal
-    public function listarPersonal()
-    {
+    public function listarPersonal(){
         if(Personal::find(Auth::user()->id)){
             $personal = Personal::find(Auth::user()->id);
             return View::make('cvu.list.personal',array('personal'=> $personal))->with('perfil', Auth::user()->perfil->nom_perfil);
@@ -51,8 +49,7 @@ class CVUController extends BaseController {
         return $respuesta; 
     }
 
-    public function llenarPersonal()
-    {
+    public function llenarPersonal(){
         $validar= $this->validarPersonal(Input::all());
 
         if($validar['error'] == true){
@@ -89,8 +86,7 @@ class CVUController extends BaseController {
  
     }
     
-        public function editarPersonal()
-    {
+        public function editarPersonal(){
         if(Personal::find(Auth::user()->id)){
             
         $personal = Personal::find(Auth::user()->id);

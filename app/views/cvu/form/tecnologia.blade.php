@@ -1,7 +1,7 @@
 @extends('layouts.master')
- 
-@section('content')
-<h3>Ingrese la informacion de la tecnologia que domina</h3>
+ @section('content')
+
+<h3 class="nulink"><a href="{{URL::to('cvu/tecnologias');}}" title="Regresar" class="small text-primary"><i class="glyphicon glyphicon glyphicon-chevron-left"></i>&nbsp;</a>Ingrese la informacion de la tecnologia que domina</h3>
 <hr>
 @if(isset($tecnologia))
     {{Form::model($tecnologia, array('url' => 'cvu/tecnologias/editar/guardar/'.$tecnologia->id, 'autocomplete'=>'off'))}}
@@ -12,7 +12,7 @@
 
 <div class="form-group">
 {{Form::label('nom_tec', 'Nombre de la tecnologia')}}
-{{Form::text('nom_tec', Input::old('nom_tec'), array('class'=>'form-control', 'placeholder'=>'Ingrese el nombre de la tecnologia que domina', 'autocomplete'=>'off'))}} 
+{{Form::text('nom_tec', Input::old('nom_tec'), array('class'=>'form-control', 'placeholder'=>'Ingrese el nombre de la tecnologia que domina', 'autocomplete'=>'off', 'maxlength'=>'150'))}} 
 </div>
 
 <div class="form-group">

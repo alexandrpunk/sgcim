@@ -5,8 +5,8 @@
 
 <dl>
 @foreach($especialidades as $especialidad)
-<dt class="text-uppercase">{{$especialidad->nom_esp}}</dt>
-<dd>{{$especialidad->desc_esp}}</dd><br>
+<dt class="text-uppercase">{{{$especialidad->nom_esp}}}</dt>
+<dd>{{{$especialidad->desc_esp}}}</dd><br>
 <div class="form-group">
 {{ HTML::link( 'cvu/especialidades/editar/'.$especialidad->id , 'Editar', array('class'=>'btn btn-xs btn-info')) }}
 {{ HTML::link( 'cvu/especialidades/borrar/'.$especialidad->id , 'Borrar', array('class'=>'btn btn-xs btn-danger')) }}

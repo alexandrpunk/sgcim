@@ -1,7 +1,7 @@
 @extends('layouts.master')
  
 @section('content')
-<h3>Ingrese la informacion de su proyecto</h3>
+<h3 class="nulink"><a href="{{URL::to('cvu/proyectos');}}" title="Regresar" class=" small text-primary"><i class="glyphicon glyphicon glyphicon-chevron-left"></i>&nbsp;</a>Ingrese la informacion de su proyecto</h3>
 <hr>
 @if(isset($proyecto))
     {{Form::model($proyecto, array('url' => 'cvu/proyectos/editar/guardar/'.$proyecto->id, 'autocomplete'=>'off'))}}

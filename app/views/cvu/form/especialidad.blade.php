@@ -1,7 +1,7 @@
 @extends('layouts.master')
  
 @section('content')
-<h3><a href="{{URL::to('cvu/especialidades');}}" title="Regresar" class="small text-primary"><i class="glyphicon glyphicon glyphicon-chevron-left"></i>&nbsp;</a>Ingrese la informacion de su especialidad</h3>
+<h3 class="nulink"><a href="{{URL::to('cvu/especialidades');}}" title="Regresar" class="small text-primary"><i class="glyphicon glyphicon glyphicon-chevron-left"></i>&nbsp;</a>Ingrese la informacion de su especialidad</h3>
 <hr>
 @if(isset($especialidad))
     {{Form::model($especialidad, array('url' => 'cvu/especialidades/editar/guardar/'.$especialidad->id, 'autocomplete'=>'off'))}}
@@ -12,7 +12,7 @@
 
 <div class="form-group">
 {{Form::label('nom_esp', 'Nombre de la especialidad')}}
-{{Form::text('nom_esp', Input::old('nom_esp'), array('class'=>'form-control', 'placeholder'=>'Ingrese el nombre de su especialidad', 'autocomplete'=>'off'))}} 
+{{Form::text('nom_esp', Input::old('nom_esp'), array('class'=>'form-control', 'placeholder'=>'Ingrese el nombre de su especialidad', 'autocomplete'=>'off', 'maxlength'=>'150'))}} 
 </div>
 
 <div class="form-group">

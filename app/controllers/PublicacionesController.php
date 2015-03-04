@@ -1,12 +1,33 @@
 <?php 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 class PublicacionesController extends BaseController {
+    
+    public function validarPublicaciones($input){
+        $respuesta = array();
+ 
+        $reglas =  array(
+            'nom_pub'  => 'max:150',
+            'tipo_pub'  => 'max:45'
+        );
+        
+        $validator = Validator::make($input, $reglas);
+        
+        if (
+            $validator->fails()){
+            $respuesta['mensaje'] = $validator;
+            $respuesta['error']   = true;
+        }else{                           
+            $respuesta['mensaje'] = 'La informacion se a guardado con exito';
+            $respuesta['error']   = false;
+        }
+        
+        return $respuesta; 
+    }
 
 //llenado de la informacion publicacion
     public function listarPublicaciones()
     {
-        $id = Auth::user()->id;
-        $publicaciones = Publicacion::where('id_cvu', '=', $id)->get();
+        $publicaciones = Publicacion::where('id_cvu', '=', Auth::user()->id)->get();
         if($publicaciones){
             return View::make('cvu.list.publicacion',array('publicaciones'=> $publicaciones));
         }
@@ -20,14 +41,20 @@ class PublicacionesController extends BaseController {
     }
     
     public function crearPublicacion(){
-        $id_cvu = Auth::user()->id;
+        $validar= $this->validarPublicaciones(Input::all());
+        
+        if($validar['error'] == true){
+             return Redirect::to('cvu/publicaciones/nuevo')->withErrors($validar['mensaje'])->withInput();
+        }
+        else{
         $publicacion = new Publicacion;
-        $publicacion->id_cvu = $id_cvu;
+        $publicacion->id_cvu =  Auth::user()->id;
         $publicacion->nom_pub = Input::get('nom_pub');
         $publicacion->tipo_pub = Input::get('tipo_pub');
         $publicacion->desc_pub = Input::get('desc_pub');
         $publicacion->save();
-        return Redirect::to('cvu/publicaciones');
+        return Redirect::to('cvu/publicaciones')->with('mensaje', $validar['mensaje']);
+        }
  
     }
     
@@ -37,15 +64,21 @@ class PublicacionesController extends BaseController {
     }
     
     public function guardarPublicacion($id){
-        $id_cvu = Auth::user()->id;
+        $validar= $this->validarPublicaciones(Input::all());
+        
+        if($validar['error'] == true){
+             return Redirect::to('cvu/publicaciones/editar/'.$id)->withErrors($validar['mensaje'])->withInput();
+        }
+        else{
         $publicacion = Publicacion::find($id);
-        $publicacion->id_cvu = $id_cvu;
+        $publicacion->id_cvu = Auth::user()->id;
         $publicacion->nom_pub = Input::get('nom_pub');
         $publicacion->tipo_pub = Input::get('tipo_pub');
         $publicacion->desc_pub = Input::get('desc_pub');
         $publicacion->save();
-        return Redirect::to('cvu/publicaciones');
+        return Redirect::to('cvu/publicaciones')->with('mensaje', $validar['mensaje']);
         }
+    }
 
   
     
@@ -57,7 +90,7 @@ class PublicacionesController extends BaseController {
         $publicacion->delete();
         // para buscar al usuario utilizamos el metido find que nos proporciona Laravel 
     
-    return Redirect::to('cvu/publicaciones');
-    }
+    return Redirect::to('cvu/publicaciones')->with('info', $info="Se ha borrado la informacion con exito");
+     }
  
 }

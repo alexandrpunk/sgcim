@@ -9,10 +9,21 @@
     {{ Form::open(array('url' => 'cvu/trabajos/nuevo/crear', 'autocomplete'=>'off')) }}
 @endif
 
+<div class="row">
+    <div class="col-md-6">
 <div class="form-group">
-{{Form::label('nom_trabajo', 'Nombre del trabajo')}}
-{{Form::text('nom_trabajo', Input::old('nom_trabajo'), array('class'=>'form-control', 'placeholder'=>'Ingrese el nombre del trabajo', 'autocomplete'=>'off'))}} 
+{{Form::label('lugar_trabajo', 'Lugar donde Trabajo')}}
+{{Form::text('lugar_trabajo', Input::old('lugar_trabajo'), array('class'=>'form-control', 'placeholder'=>'Ingrese el nombre del lugar donde trabajo', 'autocomplete'=>'off'))}} 
 </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            {{Form::label('puesto_trabajo', 'Puesto en el que trabajo')}}
+{{Form::text('puesto_trabajo', Input::old('puesto_trabajo'), array('class'=>'form-control', 'placeholder'=>'Ingrese el puesto que desempeño', 'autocomplete'=>'off'))}} 
+        </div>
+    </div>
+</div>
+
 
 <div class="form-group">
 {{Form::label('jefe_trabajo', 'Jefe directo')}}

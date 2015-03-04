@@ -5,7 +5,7 @@
     <a href="cvu/personal">
       <div class="option-block">
           <img src="/img/icons/man.png">
-          <p>Datos personales</p>
+          <p>Info. Personal</p>
       </div> 
     </a>
  </div>

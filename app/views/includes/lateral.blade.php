@@ -2,7 +2,7 @@
                
 <div class="media">
   <div class="media-left ">
-      <img class="img-circle" src="http://placehold.it/90" alt="display">
+      <img class="img-circle" style="border: 2px solid green;" src="http://placehold.it/90" alt="display">
   </div>
   <div class="media-body media-middle ">
   <h5 class="text-capitalize"><strong>{{ HTML::link('/', Auth::user()->nombre.' '.Auth::user()->apellidos) }}</strong></h5>

@@ -73,7 +73,7 @@ class CursosController extends BaseController{
         return Redirect::to('cvu/cursos')->with('mensaje', $validar['mensaje']);
         }
 
-        }
+    }
 
   
     
@@ -86,6 +86,6 @@ class CursosController extends BaseController{
         // para buscar al usuario utilizamos el metido find que nos proporciona Laravel 
     
     return Redirect::to('cvu/cursos')->with('info', $info="Se ha borrado la informacion con exito");
-    }    
+     }
     
 }

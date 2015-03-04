@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-<h3><a href="{{URL::to('cvu/cursos');}}" title="Regresar" class="small text-primary"><i class="glyphicon glyphicon glyphicon-chevron-left"></i>&nbsp;</a>Ingrese la informacion de su curso</h3>
+<h3 class="nulink"><a href="{{URL::to('cvu/cursos');}}" title="Regresar" class="small text-primary"><i class="glyphicon glyphicon glyphicon-chevron-left"></i>&nbsp;</a>Ingrese la informacion de su curso</h3>
 <hr>
 @if(isset($curso))
     {{Form::model($curso, array('url' => 'cvu/cursos/editar/guardar/'.$curso->id, 'autocomplete'=>'off'))}}
@@ -12,7 +12,7 @@
 
 <div class="form-group">
 {{Form::label('nom_curso', 'Nombre del curso')}}
-{{Form::text('nom_curso', Input::old('nom_curso'), array('class'=>'form-control', 'placeholder'=>'Ingrese el nombre de su curso', 'autocomplete'=>'off'))}} 
+{{Form::text('nom_curso', Input::old('nom_curso'), array('class'=>'form-control', 'placeholder'=>'Ingrese el nombre de su curso', 'autocomplete'=>'off', 'maxlength'=>'150'))}} 
 </div>
 
 <div class="form-group">

@@ -1,7 +1,7 @@
 @extends('layouts.master')
  
 @section('content')
-<h3>Ingrese la informacion referente al idioma que domina</h3>
+<h3 class="nulink"><a href="{{URL::to('cvu/idiomas');}}" title="Regresar" class="small text-primary"><i class="glyphicon glyphicon glyphicon-chevron-left"></i>&nbsp;</a>Ingrese la informacion referente al idioma que domina</h3>
 <hr>
 @if(isset($idioma))
     {{Form::model($idioma, array('url' => 'cvu/idiomas/editar/guardar/'.$idioma->id, 'autocomplete'=>'off'))}}
@@ -12,13 +12,13 @@
     <div class="col-md-5">
         <div class="form-group">
 {{Form::label('idioma', 'Nombre del idioma')}}
-{{Form::text('idioma', Input::old('idioma'), array('class'=>'form-control', 'placeholder'=>'Ingrese el nombre del idioma que domina', 'autocomplete'=>'off'))}} 
+{{Form::text('idioma', Input::old('idioma'), array('class'=>'form-control', 'placeholder'=>'Ingrese el nombre del idioma que domina', 'autocomplete'=>'off', 'maxlength'=>'100'))}} 
         </div>
     </div>
     <div class="col-md-4">
         <div class="form-group">
 {{Form::label('certificacion', 'Certificacion')}}
-{{Form::text('certificacion', Input::old('certificacion'), array('class'=>'form-control', 'placeholder'=>'Ingrese el nombre de su certificacion', 'autocomplete'=>'off'))}} 
+{{Form::text('certificacion', Input::old('certificacion'), array('class'=>'form-control', 'placeholder'=>'Ingrese el nombre de su certificacion', 'autocomplete'=>'off', 'maxlength'=>'100'))}} 
         </div>
     </div>
 <div class="col-md-3">

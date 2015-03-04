@@ -6,5 +6,5 @@ class Trabajo extends Eloquent { //Todos los modelos deben extender la clase Elo
     }
     
     protected $table = 'Trabajos';
-    protected $fillable = array('id_cvu', 'nom_trabajo', 'jefe_trabajo', 'sigue_trabajo', 'tiempo_trabajo', 'desc_trabajo');
+    protected $fillable = array('id_cvu', 'lugar_trabajo', 'puesto_trabajo', 'jefe_trabajo', 'sigue_trabajo', 'tiempo_trabajo', 'desc_trabajo');
 }

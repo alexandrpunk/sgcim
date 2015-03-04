@@ -17,7 +17,7 @@
 
 <div class="form-group">
 {{Form::label('domicilio', 'Domicilio')}}
-{{Form::textarea('domicilio', Input::old('domicilio'), array('class'=>'form-control', 'placeholder'=>'Ingrese la informacion del domicilio', 'autocomplete'=>'off'))}} 
+{{Form::textarea('domicilio', Input::old('domicilio'), array('class'=>'form-control', 'placeholder'=>'Ingrese la direccio del domicilio', 'autocomplete'=>'off'))}} 
 </div>
         
 <div class="row">

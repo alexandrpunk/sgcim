@@ -2,11 +2,34 @@
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 class IdiomasController extends BaseController {
 
+    public function validarIdiomas($input){
+        $respuesta = array();
+ 
+        $reglas =  array(
+            'idioma'  => 'max:100',
+            'certificacion'  => 'max:100',
+            'nivel'  => array('numeric', 'max:100')
+        );
+        
+        $validator = Validator::make($input, $reglas);
+        
+        if (
+            $validator->fails()){
+            $respuesta['mensaje'] = $validator;
+            $respuesta['error']   = true;
+        }else{                           
+            $respuesta['mensaje'] = 'La informacion se a guardado con exito';
+            $respuesta['error']   = false;
+        }
+        
+        return $respuesta; 
+    }
+    
+
 //llenado de la informacion idioma
     public function listarIdiomas()
     {
-        $id = Auth::user()->id;
-        $idiomas = Idioma::where('id_cvu', '=', $id)->get();
+        $idiomas = Idioma::where('id_cvu', '=', Auth::user()->id)->get();
         if($idiomas){
             return View::make('cvu.list.idioma',array('idiomas'=> $idiomas));
         }
@@ -20,14 +43,20 @@ class IdiomasController extends BaseController {
     }
     
     public function crearIdioma(){
-        $id_cvu = Auth::user()->id;
+         $validar= $this->validarIdiomas(Input::all());
+        
+        if($validar['error'] == true){
+             return Redirect::to('cvu/idiomas/nuevo')->withErrors($validar['mensaje'])->withInput();
+        }
+        else{
         $idioma = new Idioma;
-        $idioma->id_cvu = $id_cvu;
+        $idioma->id_cvu =Auth::user()->id;
         $idioma->idioma = Input::get('idioma');
         $idioma->certificacion = Input::get('certificacion');
         $idioma->nivel = Input::get('nivel');
         $idioma->save();
-        return Redirect::to('cvu/idiomas');
+        return Redirect::to('cvu/idiomas')->with('mensaje', $validar['mensaje']);
+        }
  
     }
     
@@ -37,15 +66,20 @@ class IdiomasController extends BaseController {
     }
     
     public function guardarIdioma($id){
-        $id_cvu = Auth::user()->id;
+                 $validar= $this->validarIdiomas(Input::all());
+        
+        if($validar['error'] == true){
+             return Redirect::to('cvu/idiomas/editar/'.$id)->withErrors($validar['mensaje'])->withInput();
+        }
+        else{
         $idioma = Idioma::find($id);
-        $idioma->id_cvu = $id_cvu;
         $idioma->idioma = Input::get('idioma');
         $idioma->certificacion = Input::get('certificacion');
         $idioma->nivel = Input::get('nivel');
         $idioma->save();
         return Redirect::to('cvu/idiomas');
         }
+    }
 
   
     
@@ -57,7 +91,7 @@ class IdiomasController extends BaseController {
         $idioma->delete();
         // para buscar al usuario utilizamos el metido find que nos proporciona Laravel 
     
-    return Redirect::to('cvu/idiomas');
+    return Redirect::to('cvu/idiomas')->with('info', $info="Se ha borrado la informacion con exito");
     }
  
 }

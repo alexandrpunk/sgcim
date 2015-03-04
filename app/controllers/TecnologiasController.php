@@ -1,6 +1,28 @@
 <?php 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 class TecnologiasController extends BaseController {
+    
+ public function validarTecnologias($input){
+        $respuesta = array();
+ 
+        $reglas =  array(
+            'nom_tec'  => 'max:150'
+        );
+        
+        $validator = Validator::make($input, $reglas);
+        
+        if (
+            $validator->fails()){
+            $respuesta['mensaje'] = $validator;
+            $respuesta['error']   = true;
+        }else{                           
+            $respuesta['mensaje'] = 'La informacion se a guardado con exito';
+            $respuesta['error']   = false;
+        }
+        
+        return $respuesta; 
+    }
+    
 
 //llenado de la informacion tecnologia
     public function listarTecnologias()
@@ -20,13 +42,19 @@ class TecnologiasController extends BaseController {
     }
     
     public function crearTecnologia(){
-        $id_cvu = Auth::user()->id;
+         $validar= $this->validarTecnologias(Input::all());
+        
+        if($validar['error'] == true){
+             return Redirect::to('cvu/tecnologias/nuevo')->withErrors($validar['mensaje'])->withInput();
+        }
+        else{
         $tecnologia = new Tecnologia;
-        $tecnologia->id_cvu = $id_cvu;
+        $tecnologia->id_cvu = Auth::user()->id;
         $tecnologia->nom_tec = Input::get('nom_tec');
         $tecnologia->desc_tec = Input::get('desc_tec');
         $tecnologia->save();
-        return Redirect::to('cvu/tecnologias');
+        return Redirect::to('cvu/tecnologias')->with('mensaje', $validar['mensaje']);
+        }
  
     }
     
@@ -36,14 +64,19 @@ class TecnologiasController extends BaseController {
     }
     
     public function guardarTecnologia($id){
-        $id_cvu = Auth::user()->id;
+        $validar= $this->validarTecnologias(Input::all());
+        
+        if($validar['error'] == true){
+             return Redirect::to('cvu/tecnologias/editar/'.$id)->withErrors($validar['mensaje'])->withInput();
+        }
+        else{ 
         $tecnologia = Tecnologia::find($id);
-        $tecnologia->id_cvu = $id_cvu;
         $tecnologia->nom_tec = Input::get('nom_tec');
         $tecnologia->desc_tec = Input::get('desc_tec');
         $tecnologia->save();
-        return Redirect::to('cvu/tecnologias');
+        return Redirect::to('cvu/tecnologias')->with('mensaje', $validar['mensaje']);
         }
+    }
 
   
     
@@ -55,7 +88,7 @@ class TecnologiasController extends BaseController {
         $tecnologia->delete();
         // para buscar al usuario utilizamos el metido find que nos proporciona Laravel 
     
-    return Redirect::to('cvu/tecnologias');
+    return Redirect::to('cvu/tecnologias')->with('info', $info="Se ha borrado la informacion con exito");
     }
  
 }
