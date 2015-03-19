@@ -1,6 +1,17 @@
 <?php 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-class TrabajosController extends BaseController {
+class TrabajosController extends ValidacionController {
+    
+ 
+        protected $reglas =  array(
+            'lugar_trabajo'  => 'max:150',
+            'puesto_trabajo' => 'max:415',
+            'jefe_trabajo' => 'max:150',
+            'sigue_trabajo' => 'max:2',
+            'desc_trabajo' => 'max:150'
+        );
+        
+
 
 //llenado de la informacion trabajo
     public function listarTrabajos(){
@@ -18,16 +29,23 @@ class TrabajosController extends BaseController {
     }
     
     public function crearTrabajo(){
-        $trabajo = new Trabajo;
-        $trabajo->id_cvu = Auth::user()->id;
-        $trabajo->lugar_trabajo = Input::get('lugar_trabajo');
-        $trabajo->puesto_trabajo = Input::get('puesto_trabajo');
-        $trabajo->jefe_trabajo = Input::get('jefe_trabajo');
-        $trabajo->sigue_trabajo = Input::get('sigue_trabajo');
-        $trabajo->tiempo_trabajo = Input::get('tiempo_trabajo');
-        $trabajo->desc_trabajo = Input::get('desc_trabajo');
-        $trabajo->save();
-        return Redirect::to('cvu/trabajos');
+        $validar= $this->validar(Input::all());
+        
+        if($validar['error'] == true){
+             return Redirect::to('cvu/trabajos/nuevo')->withErrors($validar['mensaje'])->withInput();
+        }
+        else{
+            $trabajo = new Trabajo;
+            $trabajo->id_cvu = Auth::user()->id;
+            $trabajo->lugar_trabajo = Input::get('lugar_trabajo');
+            $trabajo->puesto_trabajo = Input::get('puesto_trabajo');
+            $trabajo->jefe_trabajo = Input::get('jefe_trabajo');
+            $trabajo->sigue_trabajo = Input::get('sigue_trabajo');
+            $trabajo->tiempo_trabajo = Input::get('tiempo_trabajo');
+            $trabajo->desc_trabajo = Input::get('desc_trabajo');
+            $trabajo->save();
+            return Redirect::to('cvu/trabajos');
+        }
  
     }
     
