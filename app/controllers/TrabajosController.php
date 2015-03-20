@@ -8,7 +8,6 @@ class TrabajosController extends ValidacionController {
             'puesto_trabajo' => 'max:415',
             'jefe_trabajo' => 'max:150',
             'sigue_trabajo' => 'max:2',
-            'desc_trabajo' => 'max:150'
         );
         
 
@@ -44,7 +43,7 @@ class TrabajosController extends ValidacionController {
             $trabajo->tiempo_trabajo = Input::get('tiempo_trabajo');
             $trabajo->desc_trabajo = Input::get('desc_trabajo');
             $trabajo->save();
-            return Redirect::to('cvu/trabajos');
+            return Redirect::to('cvu/trabajos')->with('mensaje', $validar['mensaje']);
         }
  
     }
@@ -55,6 +54,12 @@ class TrabajosController extends ValidacionController {
     }
     
     public function guardarTrabajo($id){
+        $validar= $this->validar(Input::all());
+        
+        if($validar['error'] == true){
+             return Redirect::to('cvu/trabajos/nuevo')->withErrors($validar['mensaje'])->withInput();
+        }
+        else{
         $trabajo = Trabajo::find($id);
         $trabajo->lugar_trabajo = Input::get('lugar_trabajo');
         $trabajo->puesto_trabajo = Input::get('puesto_trabajo');
@@ -63,8 +68,9 @@ class TrabajosController extends ValidacionController {
         $trabajo->tiempo_trabajo = Input::get('tiempo_trabajo');
         $trabajo->desc_trabajo = Input::get('desc_trabajo');
         $trabajo->save();
-        return Redirect::to('cvu/trabajos');
+        return Redirect::to('cvu/trabajos')->with('mensaje', $validar['mensaje']);
         }
+    }
 
   
     
@@ -76,7 +82,7 @@ class TrabajosController extends ValidacionController {
         $trabajo->delete();
         // para buscar al usuario utilizamos el metido find que nos proporciona Laravel 
     
-    return Redirect::to('cvu/trabajos');
+    return Redirect::to('cvu/trabajos')->with('info', $info="Se ha borrado la informacion con exito");
     }
  
 }
