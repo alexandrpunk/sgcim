@@ -1,7 +1,7 @@
 @extends('layouts.master')
  
 @section('content')
-<h3 class="nulink"><a href="{{URL::to('cvu/personal');}}" title="Regresar" class="small text-primary"><i class="glyphicon glyphicon glyphicon-chevron-left"></i>&nbsp;</a>Ingrese sus datos personales</h3>
+<h3 class="nulink"><a href="{{URL::to('cvu/personal');}}" title="Regresar" class="small text-primary"><i class="glyphicon glyphicon glyphicon-chevron-left"></i>&nbsp;</a>Ingrese los datos personales de su CV</h3>
 <hr>
 @if(isset($personal))
     {{Form::model($personal, array('url' => 'cvu/personal/guardar', 'autocomplete'=>'off'))}}

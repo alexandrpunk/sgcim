@@ -7,6 +7,7 @@ Route::get('login', array('uses' => 'AuthController@showLogin'));
 Route::post('login', 'AuthController@postLogin');
 Route::get('logout', 'AuthController@getLogout');
 
+
 //
 //PERFILES
 //
@@ -24,6 +25,10 @@ Route::get('perfiles/borrar/{id}', array('uses'=>'PerfilesController@borrarPerfi
 //
 //Usuarios
 //
+//muestra informacion del usuaio
+Route::get('usuario', array('uses' => 'UsuariosController@mostrarUsuario'));
+//muestra informacion del usuaio
+Route::get('usuario/editar', array('uses' => 'UsuariosController@editarUsuario'));
 //se muestran los usuarios existentes
 Route::get('usuarios', array('uses' => 'UsuariosController@mostrarUsuarios'));
 //muestra el formulario para crear un usuario

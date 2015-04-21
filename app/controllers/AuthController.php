@@ -8,7 +8,7 @@ class AuthController extends BaseController {
         if (Auth::check())
         {
             // Redirect to homepage
-            return Redirect::to('usuarios');
+            return Redirect::to('usuario');
         }
 
         // Show the login page
@@ -40,7 +40,7 @@ class AuthController extends BaseController {
             if (Auth::attempt($userdata, $remember))
             {
                 // Redirect to homepage
-                return Redirect::to('usuarios')->with('info', 'Haz iniciado sesion');
+                return Redirect::to('usuario')->with('info', 'Haz iniciado sesion');
             }
             else
             {

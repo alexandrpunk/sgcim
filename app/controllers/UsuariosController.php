@@ -1,5 +1,25 @@
 <?php 
 class UsuariosController extends BaseController {
+    
+    /**
+     * Mustra la informacion del usuario
+     */
+    public function mostrarUsuario()
+    {
+        $usuario = Usuario::find(Auth::user()->id); 
+
+        return View::make('usuarios.perfil', array('usuario' => $usuario));
+        
+    }
+    
+    /**
+     * Editar al inforacion del usurio
+     */
+    public function editarUsuario()
+    {
+  
+        return View::make('usuarios.editar');
+    }
  
     /**
      * Mustra la lista con todos los usuarios

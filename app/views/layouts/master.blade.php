@@ -79,6 +79,7 @@
     {{HTML::script('js/bootstrap.min.js')}}
     {{HTML::script('js/bootstrap-datepicker.js')}}
     {{HTML::script('js/script.js')}}
+    {{HTML::script('js/bootstrap.file-input.js')}}
 
 </body>
 </html>
