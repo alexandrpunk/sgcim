@@ -1,10 +1,5 @@
 @extends('layouts.master')
- 
-@section('sidebar')
-     @parent
-     Formulario de Usuario
-@stop
- 
+
 @section('content')
         {{ HTML::link('usuarios', 'volver'); }}
 

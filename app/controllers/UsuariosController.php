@@ -44,7 +44,7 @@ class UsuariosController extends BaseController {
     public function nuevoUsuario()
     {
         $perfiles = Perfil::all();
-        return View::make('usuarios.crear',array('perfiles'=> $perfiles));
+        return View::make('auth.registro',array('perfiles'=> $perfiles));
     }
  
  
